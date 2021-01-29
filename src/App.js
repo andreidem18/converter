@@ -8,7 +8,6 @@ const Converter = () => {
 
   function convertToRadians(event){
     let value = event.target.value;
-    setTitle('de grados a radianes');
     if(value <= 360 && value >= 0){
       setDegrees(value);
       setRadians(Math.round((value/57.296) * 1000)/1000);
@@ -20,7 +19,6 @@ const Converter = () => {
   }
   function convertToDegrees(event){
     let value = event.target.value;
-    setTitle('de radianes a grados');
     if(value <= 6.283 && value >= 0){
       setRadians(value);
       setDegrees(Math.round((value*57.296) * 1000)/1000);
