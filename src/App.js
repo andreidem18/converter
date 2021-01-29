@@ -3,6 +3,7 @@ import './App.css';
 
 const Converter = () => {
 
+  // No me dio la cabeza para resolverlo con estados :'(
   // const [value, setValue] = useState(0);
 
   function convertToRadians(event){
@@ -18,8 +19,7 @@ const Converter = () => {
   }
   function convertToDegrees(event){
     let value = event.target.value;
-    let answer = Math.round((value/57.296) * 1000)/1000;
-    answer = answer.toFixed(3);
+    let answer = Math.round((value*57.296) * 1000)/1000;
     if(value <= 6.283 && value >= 0){
       document.getElementById('degrees').value = answer;
     } else {
