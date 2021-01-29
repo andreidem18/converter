@@ -5,7 +5,6 @@ const Converter = () => {
 
   const [degrees, setDegrees] = useState(0);
   const [radians, setRadians] = useState(0);
-  const [title, setTitle] = useState('Convertidor');
 
   function convertToRadians(event){
     let value = event.target.value;
