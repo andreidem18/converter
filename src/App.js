@@ -1,22 +1,57 @@
-import logo from './logo.svg';
 import './App.css';
+// import React, { useState } from 'react';
+
+const Converter = () => {
+
+  // const [value, setValue] = useState(0);
+
+  function convertToRadians(event){
+    let value = event.target.value;
+    let answer = Math.round((value/57.296) * 1000)/1000;
+    if(value <= 360 && value >= 0){
+      document.getElementById('radians').value = answer;
+    } else {
+      alert('Lo sentimos, valor inválido');
+      document.getElementById('degrees').value = `${360}`;
+      document.getElementById('radians').value = `${6.283}`;
+    }
+  }
+  function convertToDegrees(event){
+    let value = event.target.value;
+    let answer = Math.round((value/57.296) * 1000)/1000;
+    answer = answer.toFixed(3);
+    if(value <= 6.283 && value >= 0){
+      document.getElementById('degrees').value = answer;
+    } else {
+      alert('Lo sentimos, valor inválido');
+      document.getElementById('degrees').value = `${360}`;
+      document.getElementById('radians').value = `${6.283}`;
+    }
+  }
+  return (
+    <div className="center">
+      <div>
+        <div className="text-center">
+          <label htmlFor="degrees">Grados</label>
+          <input type="text" onChange={convertToRadians} id="degrees"/>
+        </div>
+      </div>
+      <div>
+        <div className="text-center">
+          <label htmlFor="radians">Radianes</label>
+          <input type="text" onChange={convertToDegrees} id="radians"/>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 function App() {
   return (
     <div className="App">
+      <h1 className="text-center">Convertidor</h1>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+       <Converter/>
       </header>
     </div>
   );
