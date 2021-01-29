@@ -1,31 +1,34 @@
 import './App.css';
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 const Converter = () => {
 
-  // No me dio la cabeza para resolverlo con estados :'(
-  // const [value, setValue] = useState(0);
+  const [degrees, setDegrees] = useState(0);
+  const [radians, setRadians] = useState(0);
+  const [title, setTitle] = useState('Convertidor');
 
   function convertToRadians(event){
     let value = event.target.value;
-    let answer = Math.round((value/57.296) * 1000)/1000;
+    setTitle('de grados a radianes');
     if(value <= 360 && value >= 0){
-      document.getElementById('radians').value = answer;
+      setDegrees(value);
+      setRadians(Math.round((value/57.296) * 1000)/1000);
     } else {
       alert('Lo sentimos, valor inválido');
-      document.getElementById('degrees').value = `${360}`;
-      document.getElementById('radians').value = `${6.283}`;
+      setDegrees(360);
+      setRadians(6.283);
     }
   }
   function convertToDegrees(event){
     let value = event.target.value;
-    let answer = Math.round((value*57.296) * 1000)/1000;
+    setTitle('de radianes a grados');
     if(value <= 6.283 && value >= 0){
-      document.getElementById('degrees').value = answer;
+      setRadians(value);
+      setDegrees(Math.round((value*57.296) * 1000)/1000);
     } else {
       alert('Lo sentimos, valor inválido');
-      document.getElementById('degrees').value = `${360}`;
-      document.getElementById('radians').value = `${6.283}`;
+      setDegrees(360);
+      setRadians(6.283);
     }
   }
   return (
@@ -33,13 +36,13 @@ const Converter = () => {
       <div>
         <div className="text-center">
           <label htmlFor="degrees">Grados</label>
-          <input type="text" onChange={convertToRadians} id="degrees"/>
+          <input type="text" onChange={convertToRadians} value={degrees}/>
         </div>
       </div>
       <div>
         <div className="text-center">
           <label htmlFor="radians">Radianes</label>
-          <input type="text" onChange={convertToDegrees} id="radians"/>
+          <input type="text" onChange={convertToDegrees} value={radians}/>
         </div>
       </div>
     </div>
